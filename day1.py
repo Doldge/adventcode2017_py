@@ -15,4 +15,4 @@ def calc(step):
 # Part 1.
 print(calc(step=1))
 # Part 2.
-print(calc(step=int(len(myInput) / 2)))
+print(calc(step=len(myInput) // 2))
