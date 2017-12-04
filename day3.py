@@ -6,13 +6,13 @@ import math
 # and then we need to find the shortest path from that position to the center
 # of our memory map.
 
-#37 36 35 34 33 32 31
-#38 17 16 15 14 13 30
-#39 18 5  4  3  12 29
-#40 19 6  1  2  11 28
-#41 20 7  8  9  10 27
-#42 21 22 23 24 25 26
-#43 44 45 46 47 48 49
+# 37 36 35 34 33 32 31
+# 38 17 16 15 14 13 30
+# 39 18 5  4  3  12 29
+# 40 19 6  1  2  11 28
+# 41 20 7  8  9  10 27
+# 42 21 22 23 24 25 26
+# 43 44 45 46 47 48 49
 
 # The square of the square root gets you the highest number in a memory square.
 # The memory square's position relative to the 1 is based on the square root of
@@ -21,6 +21,7 @@ import math
 myInput = 325489
 
 
+# Part 1.
 def calc_distance_to_center(input_value):
     # Length of the side of the squarei
     print('*'*8)
@@ -35,15 +36,16 @@ def calc_distance_to_center(input_value):
     # we gone).
     cycle = (sqr_len - 1) / 2
     print('Square Cycles: {}'.format(cycle))
-    # The position of our number, relative to the bottom right corner of the
-    # square.
-    # FIXME FIXME FIXME - This is wrong.
-    distance_from_end = divmod((last_value+cycle+1 - input_value), sqr_len)
-    print('distance_from_end: {}'.format(distance_from_end))
-    position_relative_to_middle = cycle + (sqr_len // 2) - distance_from_end[1]
-    print('position from middle: {}'.format(position_relative_to_middle))
+    axises = [
+        sqr_len**2 - ((sqr_len-1) * i) - math.floor(sqr_len/2)
+        for i in range(0, 4)
+    ]  # get the axis "cells"
+    steps_to_reach_axix_from_input = min([
+        abs(axis - input_value) for axis in axises
+    ]) + cycle
+    print('position from middle: {}'.format(steps_to_reach_axix_from_input))
     print('*'*8+'\n')
-    return position_relative_to_middle
+    return steps_to_reach_axix_from_input
 
 
 calc_distance_to_center(1)
@@ -52,3 +54,4 @@ calc_distance_to_center(12)
 calc_distance_to_center(23)
 calc_distance_to_center(49)
 calc_distance_to_center(1024)
+calc_distance_to_center(myInput)
