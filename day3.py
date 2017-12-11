@@ -23,7 +23,7 @@ myInput = 325489
 
 # Part 1.
 def calc_distance_to_center(input_value):
-    # Length of the side of the squarei
+    # Length of the side of the square
     print('*'*8)
     print('Input: {}'.format(input_value))
     sqr_len = math.ceil(math.sqrt(input_value))
@@ -48,10 +48,31 @@ def calc_distance_to_center(input_value):
     return steps_to_reach_axix_from_input
 
 
-calc_distance_to_center(1)
-calc_distance_to_center(4)
-calc_distance_to_center(12)
-calc_distance_to_center(23)
-calc_distance_to_center(49)
-calc_distance_to_center(1024)
-calc_distance_to_center(myInput)
+# Tests
+#calc_distance_to_center(1)
+#calc_distance_to_center(4)
+#calc_distance_to_center(12)
+#calc_distance_to_center(23)
+#calc_distance_to_center(49)
+#calc_distance_to_center(1024)
+#calc_distance_to_center(myInput)
+
+# Part 2.
+matrix = [[0 for j in range(0, 10000)] for i in range(0, 10000)]
+start_pos = (5000, 5000)
+cur_pos = start_pos
+relative_positions = [(cur_pos[0] + x, cur_pos[1]+y) for x, y in [(tuple(range(-1, 2)), tuple(range(-1, 2)))]]
+print(relative_positions)
+input('')
+i = 1
+while i <= myInput:
+    matrix[cur_pos[0]][cur_pos[1]] = i
+    next_x = abs(cur_pos[0] - start_pos[0])
+    next_y = abs(cur_pos[1] - start_pos[1])
+    
+    i = 0
+    for position in relative_positions:
+        i += matrix[position[0]][position[1]]
+    print(next_value)
+    input('')
+    # from my current position I need to work out where the next position is.
