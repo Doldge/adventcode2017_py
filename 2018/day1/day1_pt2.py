@@ -2,7 +2,7 @@
 
 # Read the inputs
 input_list = []
-with open('./advent_2017_day_1_pt1_input.txt') as f:
+with open('./advent_2018_day_1_pt1_input.txt') as f:
     input_list = [int(x) for x in f.readlines()]
 
 
