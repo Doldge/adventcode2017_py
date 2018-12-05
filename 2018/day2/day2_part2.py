@@ -9,7 +9,7 @@ with open('./day2_input.txt') as f:
 # Our Lines
 for i, line in enumerate(input_list):
 	# Comparison Lines, ignore lines we've already compared against.
-	for comp_line in input_list[i:]:
+	for comp_line in input_list[i+1:]:
 		diff = len(line)
 		for char_index, char in enumerate(comp_line):
 			if line[char_index] == comp_line[char_index]:
@@ -19,5 +19,8 @@ for i, line in enumerate(input_list):
 			# print the diff and then exit
 			output_string = ''
 			for char_index, char in enumerate(comp_line):
-				output_string += char if char == line[char_index] else ''
+				output_string += (
+					char if char == line[char_index]
+					else ''
+				)
 			print(output_string)
